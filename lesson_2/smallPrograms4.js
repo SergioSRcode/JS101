@@ -46,19 +46,20 @@ END
 
 function indexOf3rdInstance(str) {
   let instanceCounter = 0;
-  
+
   for (let i = 0; i < str.length; i++) {
+      
+  if (instanceCounter === 3) {
+    return i - 1;
     
-    if (instanceCounter === 3) {
-      return i;
-    } else if (str[i] === "x") {
+  } else if (str[i] === "a") {
       instanceCounter += 1;
     }
   }
 
   if (instanceCounter < 3) {
     return null;
-  }
+  } 
 }
 
-console.log(indexOf3rdInstance("axbxcdxex"));
+console.log(indexOf3rdInstance("ccaaaxbxcdxex"));
