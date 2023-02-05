@@ -67,4 +67,3 @@ while (true) {
   if (answer[0].toLowerCase() !== 'y') break;
 }
 
-// does branching work??
