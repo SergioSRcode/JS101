@@ -10,6 +10,8 @@ function invalidNumber(number) {
   return number.trimStart() === '' || Number.isNaN(Number(number));
 }
 
+console.clear();
+
 function prompt(message) {
   console.log(`=> ${message}`);
 }
@@ -64,6 +66,10 @@ while (true) {
   prompt('Would you like to perform another calculation? (y/n)');
   let answer = READLINE.question();
 
-  if (answer[0].toLowerCase() !== 'y') break;
+  if (answer[0].toLowerCase() === 'y') {
+    console.clear();
+  } else {
+    break;
+  }
 }
 
