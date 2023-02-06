@@ -1,0 +1,7 @@
+{
+  "welcome" : "Welcome to Mr. Calculator! You may enter your name now:",
+  "validName" : "Make sure to enter a valid name!",
+  "firstNumber" : "What is the first number in your calculation?",
+  "secondNumber" : "Now what is the second number in your calculation?",
+  "operator" : "Lastly, tell me the desired operation so I, Mr. Calculator, can give you the result!"
+}
