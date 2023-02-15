@@ -3,5 +3,10 @@
   "validName" : "Make sure to enter a valid name!",
   "firstNumber" : "What is the first number in your calculation?",
   "secondNumber" : "Now what is the second number in your calculation?",
-  "operator" : "Lastly, tell me the desired operation so I, Mr. Calculator, can give you the result!"
+  "validNumber" : "Hmm... that doesn't look like a valid number. Try again!",
+  "operator" : "Lastly, tell me the desired operation so I, Mr. Calculator, can give you the result!\nWhat operation would you like to perform?\n1) Add \n2) Substract \n3) Multiply \n4) Divide",
+  "validOperator" : "Must choose 1, 2, 3 or 4",
+  "result" : "The result is:",
+  "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
+  "validInput" : "I couldn't understand your input\nWould you like to do another calculation? (y/n)"
 }

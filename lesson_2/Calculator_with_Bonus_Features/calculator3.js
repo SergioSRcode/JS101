@@ -13,7 +13,11 @@ function invalidNumber(number) {
 }
 
 function invalidName(userName) {
-  return userName.trimStart() === "" || userName.length < 3 || !userName.match(/^[0-9a-z]+$/);
+  return userName.trimStart() === "" || userName.length < 3 || !userName.match(/^[A-Za-z]+$/);
+}
+
+function invalidInput(response) {
+  return (response[0].toLowerCase() !== 'y' || response[0].toLowerCase() !== 'n') && response.length > 3;
 }
 
 console.clear();
@@ -36,7 +40,7 @@ while (true) {
   let number1 = READLINE.question();
 
   while (invalidNumber(number1)) {
-    prompt("Hmm... that doesn't look like a valid number. Try again!");
+    prompt(MESSAGES['validNumber']);
     number1 = READLINE.question();
   }
 
@@ -44,15 +48,15 @@ while (true) {
   let number2 = READLINE.question();
 
   while (invalidNumber(number2)) {
-    prompt("Hmm... that doesn't look like a valid number. Try again!");
+    prompt(MESSAGES['validNumber']);
     number2 = READLINE.question();
   }
 
-  prompt("What operation would you like to perform?\n1) Add \n2) Substract \n3) Multiply \n4) Divide");
+  prompt(MESSAGES['operator']);
   let operation = READLINE.question();
 
   while (!['1', '2', '3', '4'].includes(operation)) {
-    prompt('Must choose 1, 2, 3 or 4');
+    prompt(MESSAGES['validOperator']);
     operation = READLINE.question();
   }
 
@@ -73,15 +77,19 @@ while (true) {
       break;
   }
 
-  prompt(`The result is: ${output}`);
+  prompt(`${MESSAGES['result']} ${output}`);
 
-  prompt('Would you like to perform another calculation? (y/n)');
+  prompt(MESSAGES['anotherCalculation']);
   let answer = READLINE.question();
 
-  if (answer[0].toLowerCase() === 'y') {
+  while (invalidInput(answer)) {
+    prompt(MESSAGES['validInput']);
+    answer = READLINE.question();
+  }
+
+  if (answer[0].toLowerCase() === 'y' && answer.length <= 3) {
     console.clear();
-  } else {
+  } else if (answer[0].toLowerCase() === 'n' && answer.length <= 2) {
     break;
   }
 }
-
