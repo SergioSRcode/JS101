@@ -1,12 +1,10 @@
-// ask the user for the first number.
-// ask the user for the second number.
-// ask the user for an operation to perform.
-// perform the operation on the two numbers.
-// print the result to the console.
+//setup for linked JSON file and npm readline-sync
 
 const MESSAGES = require('./calculator_messages.json');
 
 const READLINE = require("readline-sync");
+
+// finding invalid inputs for guard clause
 
 function invalidNumber(number) {
   return number.trimStart() === '' || Number.isNaN(Number(number));
@@ -20,22 +18,28 @@ function invalidInput(response) {
   return (response[0].toLowerCase() !== 'y' || response[0].toLowerCase() !== 'n') && response.length > 3;
 }
 
+// Program start
+
 console.clear();
 
 function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-while (true) {
+// nesting the code in a while loop to give restart option at the end
 
+while (true) {
+  // asking for an input and assigning it to "name"
   prompt(MESSAGES['welcome']);
   let name = READLINE.question();
+
+  // guard clause for invalid input
 
   while (invalidName(name)) {
     prompt(MESSAGES['validName']);
     name = READLINE.question();
   }
-
+  // rinse and repeat
   prompt(MESSAGES['firstNumber']);
   let number1 = READLINE.question();
 
@@ -55,10 +59,14 @@ while (true) {
   prompt(MESSAGES['operator']);
   let operation = READLINE.question();
 
+  // while the chosen operation is not 1 - 4, ask again
+
   while (!['1', '2', '3', '4'].includes(operation)) {
     prompt(MESSAGES['validOperator']);
     operation = READLINE.question();
   }
+
+  // calculation process assigning result to "output"
 
   let output;
 
@@ -77,7 +85,11 @@ while (true) {
       break;
   }
 
+  // displaying result
+
   prompt(`${MESSAGES['result']} ${output}`);
+
+  // Program end; Asking for another calculation
 
   prompt(MESSAGES['anotherCalculation']);
   let answer = READLINE.question();

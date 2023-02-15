@@ -1,12 +1,38 @@
 {
-  "welcome" : "Welcome to Mr. Calculator! You may enter your name now:",
-  "validName" : "Make sure to enter a valid name!",
-  "firstNumber" : "What is the first number in your calculation?",
-  "secondNumber" : "Now what is the second number in your calculation?",
-  "validNumber" : "Hmm... that doesn't look like a valid number. Try again!",
-  "operator" : "Lastly, tell me the desired operation so I, Mr. Calculator, can give you the result!\nWhat operation would you like to perform?\n1) Add \n2) Substract \n3) Multiply \n4) Divide",
-  "validOperator" : "Must choose 1, 2, 3 or 4",
-  "result" : "The result is:",
-  "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
-  "validInput" : "I couldn't understand your input\nWould you like to do another calculation? (y/n)"
+  "en" : {
+    "welcome" : "Welcome to Mr. Calculator! You may enter your name now:",
+    "validName" : "Make sure to enter a valid name!",
+    "firstNumber" : "What is the first number in your calculation?",
+    "secondNumber" : "Now what is the second number in your calculation?",
+    "validNumber" : "Hmm... that doesn't look like a valid number. Try again!",
+    "operator" : "Lastly, tell me the desired operation so I, Mr. Calculator, can give you the result!\nWhat operation would you like to perform?\n1) Add \n2) Substract \n3) Multiply \n4) Divide",
+    "validOperator" : "Must choose 1, 2, 3 or 4",
+    "result" : "The result is:",
+    "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
+    "validInput" : "I couldn't understand your input\nWould you like to do another calculation? (y/n)"
+  },
+  "ger" : {
+    "welcome" : "Willkommen bei Mr. Calculator! Sie können jetzt Ihren Namen eingeben:",
+    "validName" : "Achten Sie darauf, einen gültigen Namen einzugeben!",
+    "firstNumber" : "Wie lautet die erste Zahl in Ihrer Berechnung?",
+    "secondNumber" : "Wie lautet nun die zweite Zahl in Ihrer Berechnung?",
+    "validNumber" : "Hmm... das schaut mir nicht wie eine gültige Zahl aus. Versuchen Sie es noch einmal!",
+    "operator" : "Sagen Sie mir zum Schluss die gewünschte Operation, damit ich, Mr. Calculator, das Ergebnis preisgeben kann!\n1) Addieren \n2) Subtrahieren \n3) Multiplizieren \n4) Dividieren",
+    "validOperator" : "Gültige Eingaben sind: 1, 2, 3 oder 4",
+    "result" : "Das Ergebnis lautet:",
+    "anotherCalculation" : "Möchten Sie eine weitere Berechnung durchführen? (y/n)",
+    "validInput" : "Ich konnte Ihre Eingabe nicht verstehen\nMöchten Sie eine weitere Berechnung durchführen? (y/n)"
+  },
+  "es" : {
+    "welcome" : "¡Bienvenido a Sr. Calculadora! Ya puedes introducir tu nombre:",
+    "validName" : "¡Asegúrate de introducir un nombre válido!",
+    "firstNumber" : "¿Cuál es el primer número de tu cálculo?",
+    "secondNumber" : "¿Cuál es ahora el segundo número de tu cálculo?",
+    "validNumber" : "Hmm... eso no parece un número válido. Inténtalo de nuevo",
+    "operator" : "Por último, dígame la operación deseada para que yo, el Sr. Calculadora, pueda darle el resultado!\n¿Qué operación desea realizar?\n1) Sumar \n2) Restar \n3) Multiplicar \n4) Dividir",
+    "validOperator" : "Debe elegir 1, 2, 3 o 4",
+    "result" : "El resultado es:",
+    "otroCálculo" : "¿Desea realizar otro cálculo? (y/n)",
+    "validInput" : "No he podido entender su entrada¿Desea realizar otro cálculo? (y/n)"
+  }
 }
