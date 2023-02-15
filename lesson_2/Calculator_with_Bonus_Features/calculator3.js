@@ -4,6 +4,12 @@ const MESSAGES = require('./calculator_messages.json');
 
 const READLINE = require("readline-sync");
 
+const LANGUAGE = 'en';
+
+function messages(message, lang = 'en') {
+  return MESSAGES[lang][message];
+}
+
 // finding invalid inputs for guard clause
 
 function invalidNumber(number) {
@@ -30,39 +36,39 @@ function prompt(message) {
 
 while (true) {
   // asking for an input and assigning it to "name"
-  prompt(MESSAGES['welcome']);
+  prompt(messages('welcome', LANGUAGE));
   let name = READLINE.question();
 
   // guard clause for invalid input
 
   while (invalidName(name)) {
-    prompt(MESSAGES['validName']);
+    prompt(messages('validName', LANGUAGE));
     name = READLINE.question();
   }
   // rinse and repeat
-  prompt(MESSAGES['firstNumber']);
+  prompt(messages('firstNumber', LANGUAGE));
   let number1 = READLINE.question();
 
   while (invalidNumber(number1)) {
-    prompt(MESSAGES['validNumber']);
+    prompt(messages('validNumber', LANGUAGE));
     number1 = READLINE.question();
   }
 
-  prompt(MESSAGES['secondNumber']);
+  prompt(messages('secondNumber', LANGUAGE));
   let number2 = READLINE.question();
 
   while (invalidNumber(number2)) {
-    prompt(MESSAGES['validNumber']);
+    prompt(messages('validNumber', LANGUAGE));
     number2 = READLINE.question();
   }
 
-  prompt(MESSAGES['operator']);
+  prompt(messages('operator', LANGUAGE));
   let operation = READLINE.question();
 
   // while the chosen operation is not 1 - 4, ask again
 
   while (!['1', '2', '3', '4'].includes(operation)) {
-    prompt(MESSAGES['validOperator']);
+    prompt(messages('validOperator', LANGUAGE));
     operation = READLINE.question();
   }
 
@@ -87,15 +93,15 @@ while (true) {
 
   // displaying result
 
-  prompt(`${MESSAGES['result']} ${output}`);
+  prompt(`${messages('result', LANGUAGE)} ${output}`);
 
   // Program end; Asking for another calculation
 
-  prompt(MESSAGES['anotherCalculation']);
+  prompt(messages('anotherCalculation', LANGUAGE));
   let answer = READLINE.question();
 
   while (invalidInput(answer)) {
-    prompt(MESSAGES['validInput']);
+    prompt(messages('validInput', LANGUAGE));
     answer = READLINE.question();
   }
 
