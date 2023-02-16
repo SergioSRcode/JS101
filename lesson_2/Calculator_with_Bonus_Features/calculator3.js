@@ -32,15 +32,15 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
+// asking for an input and assigning it to "name"
+
+prompt(messages('welcome', LANGUAGE));
+let name = READLINE.question();
+
 // nesting the code in a while loop to give restart option at the end
 
 while (true) {
-  // asking for an input and assigning it to "name"
-  prompt(messages('welcome', LANGUAGE));
-  let name = READLINE.question();
-
   // guard clause for invalid input
-
   while (invalidName(name)) {
     prompt(messages('validName', LANGUAGE));
     name = READLINE.question();
@@ -66,7 +66,6 @@ while (true) {
   let operation = READLINE.question();
 
   // while the chosen operation is not 1 - 4, ask again
-
   while (!['1', '2', '3', '4'].includes(operation)) {
     prompt(messages('validOperator', LANGUAGE));
     operation = READLINE.question();
