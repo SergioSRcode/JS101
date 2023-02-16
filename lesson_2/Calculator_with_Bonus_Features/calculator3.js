@@ -90,6 +90,12 @@ while (true) {
       break;
   }
 
+  // guard clause against division with 0 and -0
+
+  if (operation === "4" && (number2 === "0" || number2 === "-0")) {
+    output = 0;
+  }
+
   // displaying result
 
   prompt(`${messages('result', LANGUAGE)} ${output}`);
@@ -104,9 +110,12 @@ while (true) {
     answer = READLINE.question();
   }
 
+  // checking for input y/n or yes/no
+
   if (answer[0].toLowerCase() === 'y' && answer.length <= 3) {
     console.clear();
   } else if (answer[0].toLowerCase() === 'n' && answer.length <= 2) {
+    console.clear();
     break;
   }
 }
