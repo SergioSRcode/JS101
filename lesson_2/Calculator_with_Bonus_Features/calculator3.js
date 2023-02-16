@@ -21,7 +21,7 @@ function invalidName(userName) {
 }
 
 function invalidInput(response) {
-  return (response[0].toLowerCase() !== 'y' || response[0].toLowerCase() !== 'n') && response.length > 3;
+  return !messages('answerYes', LANGUAGE).includes(response.toLowerCase()) && !messages('answerNo', LANGUAGE).includes(response.toLowerCase());
 }
 
 // Program start
@@ -112,9 +112,9 @@ while (true) {
 
   // checking for input y/n or yes/no
 
-  if (answer[0].toLowerCase() === 'y' && answer.length <= 3) {
+  if (messages('answerYes', LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
-  } else if (answer[0].toLowerCase() === 'n' && answer.length <= 2) {
+  } else if (messages('answerNo', LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
     break;
   }

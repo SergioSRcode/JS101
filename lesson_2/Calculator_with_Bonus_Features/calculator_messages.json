@@ -9,7 +9,9 @@
     "validOperator" : "Must choose 1, 2, 3 or 4",
     "result" : "The result is:",
     "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
-    "validInput" : "I couldn't understand your input\nWould you like to do another calculation? (y/n)"
+    "validInput" : "I couldn't understand your input\nWould you like to do another calculation? (y/n)",
+    "answerYes" : ["y", "yes"],
+    "answerNo" : ["n", "no"]
   },
   "ger" : {
     "welcome" : "Willkommen bei Mr. Calculator! Sie können jetzt Ihren Namen eingeben:",
@@ -20,8 +22,10 @@
     "operator" : "Sagen Sie mir zum Schluss die gewünschte Operation, damit ich, Mr. Calculator, das Ergebnis preisgeben kann!\n1) Addieren \n2) Subtrahieren \n3) Multiplizieren \n4) Dividieren",
     "validOperator" : "Gültige Eingaben sind: 1, 2, 3 oder 4",
     "result" : "Das Ergebnis lautet:",
-    "anotherCalculation" : "Möchten Sie eine weitere Berechnung durchführen? (y/n)",
-    "validInput" : "Ich konnte Ihre Eingabe nicht verstehen\nMöchten Sie eine weitere Berechnung durchführen? (y/n)"
+    "anotherCalculation" : "Möchten Sie eine weitere Berechnung durchführen? (j/n)",
+    "validInput" : "Ich konnte Ihre Eingabe nicht verstehen\nMöchten Sie eine weitere Berechnung durchführen? (j/n)",
+    "answerYes" : ["j", "ja"],
+    "answerNo" : ["n", "nein"]
   },
   "es" : {
     "welcome" : "¡Bienvenido a Sr. Calculadora! Ya puedes introducir tu nombre:",
@@ -32,7 +36,9 @@
     "operator" : "Por último, dígame la operación deseada para que yo, el Sr. Calculadora, pueda darle el resultado!\n¿Qué operación desea realizar?\n1) Sumar \n2) Restar \n3) Multiplicar \n4) Dividir",
     "validOperator" : "Debe elegir 1, 2, 3 o 4",
     "result" : "El resultado es:",
-    "otroCálculo" : "¿Desea realizar otro cálculo? (y/n)",
-    "validInput" : "No he podido entender su entrada¿Desea realizar otro cálculo? (y/n)"
+    "otroCálculo" : "¿Desea realizar otro cálculo? (s/n)",
+    "validInput" : "No he podido entender su entrada¿Desea realizar otro cálculo? (s/n)",
+    "answerYes" : ["s", "sí"],
+    "answerNo" : ["n", "no"]
   }
 }
