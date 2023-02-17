@@ -93,7 +93,7 @@ while (true) {
   // guard clause against division with 0 and -0
 
   if (operation === "4" && (number2 === "0" || number2 === "-0")) {
-    output = 0;
+    output = "error";
   }
 
   // displaying result
