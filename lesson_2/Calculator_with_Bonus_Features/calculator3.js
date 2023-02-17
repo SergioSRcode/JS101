@@ -1,4 +1,4 @@
-//setup for linked JSON file and npm readline-sync
+//setup for linked JSON file, npm readline-sync and language settings
 
 const MESSAGES = require('./calculator_messages.json');
 
@@ -10,7 +10,7 @@ function messages(message, lang = 'en') {
   return MESSAGES[lang][message];
 }
 
-// finding invalid inputs for guard clause
+// finding invalid inputs for guard clauses
 
 function invalidNumber(number) {
   return number.trimStart() === '' || Number.isNaN(Number(number));
@@ -110,7 +110,7 @@ while (true) {
     answer = READLINE.question();
   }
 
-  // checking for input y/n or yes/no
+  // checking to rerun program y/n or yes/no
 
   if (messages('answerYes', LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
