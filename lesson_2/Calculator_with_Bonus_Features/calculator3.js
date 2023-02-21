@@ -24,7 +24,7 @@ function invalidName(userName) {
   return isEmptyString || isTooShort || !isAlpha;
 }
 
-function invalidYesNo(response) {
+function invalidYesOrNo(response) {
   const answerIsYes = messages('answerYes', LANGUAGE).includes(response.toLowerCase());
   const answerIsNo = messages('answerNo', LANGUAGE).includes(response.toLowerCase());
 
@@ -112,7 +112,7 @@ while (true) {
   prompt(messages('anotherCalculation', LANGUAGE));
   let answer = READLINE.question();
 
-  while (invalidYesNo(answer)) {
+  while (invalidYesOrNo(answer)) {
     prompt(messages('validInput', LANGUAGE));
     answer = READLINE.question();
   }
