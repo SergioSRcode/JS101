@@ -24,8 +24,11 @@ function invalidName(userName) {
   return isEmptyString || isTooShort || !isAlpha;
 }
 
-function invalidInput(response) {
-  return !messages('answerYes', LANGUAGE).includes(response.toLowerCase()) && !messages('answerNo', LANGUAGE).includes(response.toLowerCase());
+function invalidYesNo(response) {
+  const answerIsYes = messages('answerYes', LANGUAGE).includes(response.toLowerCase());
+  const answerIsNo = messages('answerNo', LANGUAGE).includes(response.toLowerCase());
+
+  return !answerIsYes && !answerIsNo;
 }
 
 // Program start
@@ -109,7 +112,7 @@ while (true) {
   prompt(messages('anotherCalculation', LANGUAGE));
   let answer = READLINE.question();
 
-  while (invalidInput(answer)) {
+  while (invalidYesNo(answer)) {
     prompt(messages('validInput', LANGUAGE));
     answer = READLINE.question();
   }
