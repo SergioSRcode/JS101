@@ -17,7 +17,11 @@ function invalidNumber(number) {
 }
 
 function invalidName(userName) {
-  return userName.trimStart() === "" || userName.length < 3 || !userName.match(/^[A-Za-z]+$/);
+  const isEmptyString = userName.trimStart() === "";
+  const isTooShort = userName.length < 3;
+  const isAlpha = userName.match(/^[A-Za-z]+$/);
+
+  return isEmptyString || isTooShort || !isAlpha;
 }
 
 function invalidInput(response) {
