@@ -7,27 +7,41 @@ function prompt(message) {
   console.log('=> ' + message);
 }
 
-function askForLength() {
-  prompt('Enter the length of the room in meters!');
-  let roomLengthInMeters = RL_SYNC.question();
-  return roomLengthInMeters.replace(/[a-zA-Z]/g, "");
-}
-function askForWidth() {
-  prompt('Enter the width of the room in meters!');
-  let roomWidthInMeters = RL_SYNC.question();
-  return roomWidthInMeters.replace(/[a-zA-Z]/g, "");
+function askForMeasure() {
+  prompt('Would you like to calculate in meters or feet?\n1) Meters\n2) Feet');
+  let MeterOrFeet = RL_SYNC.question();
+  return MeterOrFeet;
 }
 
-function result(length, width) {
+function askForLength() {
+  prompt('Enter the length of the room!');
+  let roomLength = RL_SYNC.question();
+  return roomLength.replace(/[a-zA-Z]/g, "");
+}
+function askForWidth() {
+  prompt('Enter the width of the room!');
+  let roomWidth = RL_SYNC.question();
+  return roomWidth.replace(/[a-zA-Z]/g, "");
+}
+
+function result(length, width, measure) {
   let resultInSqMeters = Number(length) * Number(width);
-  let resultInSqFeet = resultInSqMeters * 10.7639;
-  prompt(`The area of the room is ${resultInSqMeters.toFixed(2)} square meters (${resultInSqFeet.toFixed(2)} square feet)`);
+  let resultInSqFeet = Number(length) * Number(width);
+  let conversionMeterToFeet = resultInSqMeters * 10.7639;
+  let conversionFeetToMeter = resultInSqFeet / 10.7639;
+
+  if (measure === "1") {
+    prompt(`The area of the room is ${resultInSqMeters.toFixed(2)} square meters (${conversionMeterToFeet.toFixed(2)} sqare feet)`);
+  } else if (measure === "2") {
+    prompt(`The area of the room is ${resultInSqFeet.toFixed(2)} square feet (${conversionFeetToMeter.toFixed(2)} square meters)`);
+  }
 }
 
 // program start
 
 console.clear();
 
+let mOrFt = askForMeasure();
 let lengthOfRoom = askForLength();
 let widthOfRoom = askForWidth();
-result(lengthOfRoom, widthOfRoom);
+result(lengthOfRoom, widthOfRoom, mOrFt);
