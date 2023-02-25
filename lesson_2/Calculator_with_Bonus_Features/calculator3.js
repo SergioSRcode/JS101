@@ -31,7 +31,7 @@ function invalidYesOrNo(response) {
   return !answerIsYes && !answerIsNo;
 }
 
-// Program start
+// Clear console and add "=>" to prompts
 
 console.clear();
 
@@ -39,20 +39,20 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-// asking for an input and assigning it to "name"
-
-prompt(messages('welcome', LANGUAGE));
-let name = READLINE.question();
-
-// nesting the code in a while loop to give restart option at the end
-
-while (true) {
+function askForUserName() {
+  // asking for an input (username in this case)
+  prompt(messages('welcome', LANGUAGE));
+  let name = READLINE.question();
   // guard clause for invalid input
   while (invalidName(name)) {
     prompt(messages('validName', LANGUAGE));
     name = READLINE.question();
   }
-  // rinse and repeat
+}
+
+// rinse and repeat
+
+function askForFirstNumber() {
   prompt(messages('firstNumber', LANGUAGE));
   let number1 = READLINE.question();
 
@@ -60,7 +60,10 @@ while (true) {
     prompt(messages('validNumber', LANGUAGE));
     number1 = READLINE.question();
   }
+  return number1;
+}
 
+function askForSecondNumber() {
   prompt(messages('secondNumber', LANGUAGE));
   let number2 = READLINE.question();
 
@@ -68,7 +71,10 @@ while (true) {
     prompt(messages('validNumber', LANGUAGE));
     number2 = READLINE.question();
   }
+  return number2;
+}
 
+function askForOperator() {
   prompt(messages('operator', LANGUAGE));
   let operation = READLINE.question();
 
@@ -77,38 +83,41 @@ while (true) {
     prompt(messages('validOperator', LANGUAGE));
     operation = READLINE.question();
   }
+  return operation;
+}
 
+// eslint-disable-next-line max-lines-per-function
+function performCalculation(firstNum, secondNum, operation) {
   // calculation process assigning result to "output"
-
   let output;
-
   switch (operation) {
     case "1":
-      output = Number(number1) + Number(number2);
+      output = Number(firstNum) + Number(secondNum);
       break;
     case "2":
-      output = Number(number1) - Number(number2);
+      output = Number(firstNum) - Number(secondNum);
       break;
     case "3":
-      output = Number(number1) * Number(number2);
+      output = Number(firstNum) * Number(secondNum);
       break;
     case "4":
-      output = Number(number1) / Number(number2);
+      output = Number(firstNum) / Number(secondNum);
       break;
   }
-
   // guard clause against division with 0 and -0
-
-  if (operation === "4" && (number2 === "0" || number2 === "-0")) {
+  if (operation === "4" && (secondNum === "0" || secondNum === "-0")) {
     output = "error";
   }
+  return output;
+}
 
+function displayResult(output) {
   // displaying result
-
   prompt(`${messages('result', LANGUAGE)} ${output}`);
+}
 
-  // Program end; Asking for another calculation
-
+// Asking for another calculation
+function continueCalculating() {
   prompt(messages('anotherCalculation', LANGUAGE));
   let answer = READLINE.question();
 
@@ -116,13 +125,29 @@ while (true) {
     prompt(messages('validInput', LANGUAGE));
     answer = READLINE.question();
   }
-
   // checking to rerun program y/n or yes/no
-
   if (messages('answerYes', LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
   } else if (messages('answerNo', LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
-    break;
+    return false;
   }
+  return true;
+}
+
+// program start
+
+let programLoop = true;
+askForUserName();
+
+while (programLoop) {
+  let firstNum = askForFirstNumber();
+  let secondNum = askForSecondNumber();
+  let operation = askForOperator();
+  let output = performCalculation(firstNum, secondNum, operation);
+
+  displayResult(output);
+
+  // Program end; Asking for another calculation
+  programLoop = continueCalculating();
 }
