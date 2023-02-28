@@ -20,5 +20,5 @@ let amountOfBill = billAmount();
 let tipInUSD = (amountOfBill / 100) * tipPercentage();
 let totalAmount = tipInUSD + amountOfBill;
 
-console.log(`The tip is $${tipInUSD}
-The total is $${totalAmount}`);
+console.log(`The tip is $${tipInUSD.toFixed(2)}
+The total is $${totalAmount.toFixed(2)}`);
