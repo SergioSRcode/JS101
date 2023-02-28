@@ -86,29 +86,22 @@ function askForOperator() {
   return operation;
 }
 
-// eslint-disable-next-line max-lines-per-function
 function performCalculation(firstNum, secondNum, operation) {
-  // calculation process assigning result to "output"
-  let output;
-  switch (operation) {
-    case "1":
-      output = Number(firstNum) + Number(secondNum);
-      break;
-    case "2":
-      output = Number(firstNum) - Number(secondNum);
-      break;
-    case "3":
-      output = Number(firstNum) * Number(secondNum);
-      break;
-    case "4":
-      output = Number(firstNum) / Number(secondNum);
-      break;
-  }
   // guard clause against division with 0 and -0
   if (operation === "4" && (secondNum === "0" || secondNum === "-0")) {
-    output = "error";
+    return "error";
   }
-  return output;
+  // calculation process assigning result to "output"
+  switch (operation) {
+    case "1":
+      return Number(firstNum) + Number(secondNum);
+    case "2":
+      return Number(firstNum) - Number(secondNum);
+    case "3":
+      return Number(firstNum) * Number(secondNum);
+    case "4":
+      return Number(firstNum) / Number(secondNum);
+  }
 }
 
 function displayResult(output) {
@@ -137,17 +130,13 @@ function continueCalculating() {
 
 // program start
 
-let programLoop = true;
 askForUserName();
 
-while (programLoop) {
+do {
   let firstNum = askForFirstNumber();
   let secondNum = askForSecondNumber();
   let operation = askForOperator();
   let output = performCalculation(firstNum, secondNum, operation);
-
   displayResult(output);
 
-  // Program end; Asking for another calculation
-  programLoop = continueCalculating();
-}
+} while (continueCalculating()); // Program end; Asking for another calculation
