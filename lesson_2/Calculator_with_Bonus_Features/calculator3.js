@@ -31,9 +31,7 @@ function invalidYesOrNo(response) {
   return !answerIsYes && !answerIsNo;
 }
 
-// Clear console and add "=>" to prompts
-
-console.clear();
+// Add "=>" to prompts
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -102,6 +100,7 @@ function performCalculation(firstNum, secondNum, operation) {
     case "4":
       return Number(firstNum) / Number(secondNum);
   }
+  return "input undefined";
 }
 
 function displayResult(output) {
@@ -130,6 +129,7 @@ function continueCalculating() {
 
 // program start
 
+console.clear();
 askForUserName();
 
 do {
