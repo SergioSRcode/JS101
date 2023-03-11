@@ -15,12 +15,11 @@ function isLeapYear(year) {
 
   if (yearBefore1752 && divisibleBy4) {
     return true;
-  // eslint-disable-next-line max-len
-  } else if (!yearBefore1752 && (divisibleBy400 && divisibleBy100 && divisibleBy4)) {
+  } else if (divisibleBy400 && divisibleBy100 && divisibleBy4) {
     return true;
-  } else if (!yearBefore1752 && (divisibleBy100 && divisibleBy4)) {
+  } else if (divisibleBy100 && divisibleBy4) {
     return false;
-  } else if (!yearBefore1752 && divisibleBy4) {
+  } else if (divisibleBy4) {
     return true;
   } else {
     return false;
