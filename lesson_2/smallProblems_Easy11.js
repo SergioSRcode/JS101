@@ -18,14 +18,10 @@ FUNCTION (string)
 function utf16Value(string) {
   let utf16OfChars = [];
 
-  if (string === "") {
-    return 0;
-  }
-
   for (let i = 0; i < string.length; i++) {
     utf16OfChars.push(string.charCodeAt(i));
   }
-  let sumOfChars = utf16OfChars.reduce((acc, num) => acc + num);
+  let sumOfChars = utf16OfChars.reduce((acc, num) => acc + num, 0);
   return sumOfChars;
 }
 
