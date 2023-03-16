@@ -29,11 +29,27 @@ function prompt(message) {
   console.log(`👉 ${message}`);
 }
 
+// guard clause functions
+
+function invalidCurrency(chosenCurrency) {
+  const VALID_CURRENCY = ["$", "€"];
+  const CURRENCY_OF_CHOICE = VALID_CURRENCY.includes(chosenCurrency);
+
+  return !CURRENCY_OF_CHOICE;
+}
+
+
+// Collecting functions
+
 function askForCurrency() {
   let currency = "$";
   prompt(txtMessage("welcome", currency, LANGUAGE));
   currency = READLINE.question();
-  // guard clause follows
+  // guard clause for invalid currency input
+  while (invalidCurrency(currency)) {
+    prompt(txtMessage("validCurrency"));
+    currency = READLINE.question();
+  }
   return currency;
 }
 
@@ -62,6 +78,8 @@ function askLoanDuration(currency) {
   // guard clause follows
   return durationInMonths;
 }
+
+// Calculation and result print
 
 function performCalculation(lAmount, monthlyIRate, lDurationMonths) {
   // eslint-disable-next-line max-len
