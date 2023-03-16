@@ -46,8 +46,11 @@ function askLoanAmount(currency) {
 
 function askForAPR(currency) {
   prompt(txtMessage("annualPercentageRate", currency, LANGUAGE));
-  let annualPR = READLINE.question();
-  let monthlyRate = parseFloat(annualPR) / 12;
+  let annualPR = parseFloat(READLINE.question());
+  if (annualPR > 1) {
+    annualPR /= 100;
+  }
+  let monthlyRate = annualPR / 12;
   // guard clause follows
   return monthlyRate;
 }
