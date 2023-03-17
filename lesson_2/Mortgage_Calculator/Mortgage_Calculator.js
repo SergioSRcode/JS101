@@ -38,6 +38,12 @@ function invalidCurrency(chosenCurrency) {
   return !CURRENCY_OF_CHOICE;
 }
 
+function invalidLoanAmount(amountOfLoan) {
+  const AMOUNT_IS_0 = amountOfLoan === "0";
+  const AMOUNT_IS_ALPHA = amountOfLoan.match(/^[0-9]+$/);
+
+  return AMOUNT_IS_0 || !AMOUNT_IS_ALPHA;
+}
 
 // Collecting functions
 
@@ -57,6 +63,10 @@ function askLoanAmount(currency) {
   prompt(txtMessage("loanAmount", currency, LANGUAGE));
   let amountOfLoan = READLINE.question();
   // guard clause follows
+  while (invalidLoanAmount(amountOfLoan)) {
+    prompt(txtMessage("validAmount", currency, LANGUAGE));
+    amountOfLoan = READLINE.question();
+  }
   return amountOfLoan;
 }
 
