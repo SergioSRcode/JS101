@@ -40,9 +40,17 @@ function invalidCurrency(chosenCurrency) {
 
 function invalidLoanAmount(amountOfLoan) {
   const AMOUNT_IS_0 = amountOfLoan === "0";
-  const AMOUNT_IS_ALPHA = amountOfLoan.match(/^[0-9]+$/);
+  const AMOUNT_IS_NUMERIC = amountOfLoan.match(/^[0-9]+$/);
 
-  return AMOUNT_IS_0 || !AMOUNT_IS_ALPHA;
+  return AMOUNT_IS_0 || !AMOUNT_IS_NUMERIC;
+}
+
+function invalidAPR(annualPR) {
+  const APR_IS_0 = annualPR === "0";
+  const APR_IS_100 = annualPR === "100";
+  const AMOUNT_IS_NUMERIC = annualPR.match(/^[0-9]+$/);
+
+  return APR_IS_0 || !AMOUNT_IS_NUMERIC || APR_IS_100;
 }
 
 // Collecting functions
@@ -72,12 +80,16 @@ function askLoanAmount(currency) {
 
 function askForAPR(currency) {
   prompt(txtMessage("annualPercentageRate", currency, LANGUAGE));
-  let annualPR = parseFloat(READLINE.question());
-  if (annualPR > 1) {
-    annualPR /= 100;
+  let annualPR = READLINE.question();
+
+  while (invalidAPR(annualPR)) {
+    prompt(txtMessage("validAPR", currency, LANGUAGE));
+    annualPR = READLINE.question();
   }
+  annualPR = parseFloat(annualPR);
+  annualPR /= 100;
+
   let monthlyRate = annualPR / 12;
-  // guard clause follows
   return monthlyRate;
 }
 
