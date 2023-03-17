@@ -53,6 +53,20 @@ function invalidAPR(annualPR) {
   return APR_IS_0 || !AMOUNT_IS_NUMERIC || APR_IS_100;
 }
 
+function invalidLoanDuration(durationInYears) {
+  const DURATION_IS_0 = durationInYears === "0";
+  const IS_NUMERIC = durationInYears.match(/^[0-9]+$/);
+
+  return DURATION_IS_0 || !IS_NUMERIC;
+}
+
+function validYesOrNo(response, currency) {
+  const answerIsYes = txtMessage('answerYes', currency, LANGUAGE).includes(response.toLowerCase());
+  const answerIsNo = txtMessage('answerNo', currency, LANGUAGE).includes(response.toLowerCase());
+
+  return !answerIsYes && !answerIsNo;
+}
+
 // Collecting functions
 
 function askForCurrency() {
@@ -86,18 +100,21 @@ function askForAPR(currency) {
     prompt(txtMessage("validAPR", currency, LANGUAGE));
     annualPR = READLINE.question();
   }
-  annualPR = parseFloat(annualPR);
-  annualPR /= 100;
 
-  let monthlyRate = annualPR / 12;
+  let monthlyRate = (parseFloat(annualPR) / 100) / 12;
   return monthlyRate;
 }
 
 function askLoanDuration(currency) {
   prompt(txtMessage("loanDuration", currency, LANGUAGE));
-  let durationOfLoan = READLINE.question();
-  let durationInMonths = parseFloat(durationOfLoan) * 12;
-  // guard clause follows
+  let durationInYears = READLINE.question();
+
+  while (invalidLoanDuration(durationInYears)) {
+    prompt(txtMessage("validDuration", currency, LANGUAGE));
+    durationInYears = READLINE.question();
+  }
+
+  let durationInMonths = parseFloat(durationInYears) * 12;
   return durationInMonths;
 }
 
@@ -111,6 +128,24 @@ function performCalculation(lAmount, monthlyIRate, lDurationMonths) {
 
 function displayResult(monthlyAmount, currency) {
   prompt(`${txtMessage("result", currency, LANGUAGE)} ${monthlyAmount.toFixed(2)}`);
+}
+
+function continueCalculating(currency) {
+  prompt(txtMessage("anotherCalculation", currency, LANGUAGE));
+  let answer = READLINE.question();
+
+  while (validYesOrNo(answer, currency)) {
+    prompt(txtMessage("validInput", currency, LANGUAGE));
+    answer = READLINE.question();
+  }
+  if (txtMessage('answerYes', currency, LANGUAGE).includes(answer.toLowerCase())) {
+    console.clear();
+  } else if (txtMessage('answerNo', currency, LANGUAGE).includes(answer.toLowerCase())) {
+    console.clear();
+    return false;
+  }
+  return true;
+
 }
 /*
 START
@@ -134,15 +169,17 @@ REPEAT y/n
 
 no? => END
 */
+do {
+  let currencyType = askForCurrency();
 
-let currencyType = askForCurrency();
+  let loanAmount = askLoanAmount(currencyType);
 
-let loanAmount = askLoanAmount(currencyType);
+  let monthlyInterestRate = askForAPR(currencyType);
 
-let monthlyInterestRate = askForAPR(currencyType);
+  let loanDuration = askLoanDuration(currencyType);
 
-let loanDuration = askLoanDuration(currencyType);
+  // eslint-disable-next-line max-len
+  let toPayMonthly = performCalculation(loanAmount, monthlyInterestRate, loanDuration);
+  displayResult(toPayMonthly, currencyType);
 
-// eslint-disable-next-line max-len
-let toPayMonthly = performCalculation(loanAmount, monthlyInterestRate, loanDuration);
-displayResult(toPayMonthly, currencyType);
+} while (continueCalculating());
