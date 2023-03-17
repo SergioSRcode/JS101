@@ -1,25 +1,10 @@
-// Information needed:
-
-// loan amount
-// annual percentage rate (APR)
-// loan duration
-
-// Calculate: Monthly interest rate & loan duration in months
-// print number with two decimals
-
-// given formula: let m = p * (j / (1 - Math.pow((1 + j), (-n))));
-// m = monthly payment
-// p = loan amount
-// j = monthly interest rate
-// n = loan duration in month
-
-// Edge cases: no-interest loans => error
-//             not an integer num of years => calculate
-
 // meta data
+
 const READLINE = require("readline-sync");
 const MESSAGES = require("./Mortgage_Calc_Messages.json");
 const LANGUAGE = "en";
+
+// helper functions
 
 function txtMessage(message, currency = "$", lang = "en") {
   return MESSAGES[currency][lang][message];
@@ -55,7 +40,7 @@ function invalidAPR(annualPR) {
 
 function invalidLoanDuration(durationInYears) {
   const DURATION_IS_0 = durationInYears === "0";
-  const IS_NUMERIC = durationInYears.match(/^[0-9]+$/);
+  const IS_NUMERIC = durationInYears.match(/^[0-9.,]+$/);
 
   return DURATION_IS_0 || !IS_NUMERIC;
 }
@@ -84,7 +69,7 @@ function askForCurrency() {
 function askLoanAmount(currency) {
   prompt(txtMessage("loanAmount", currency, LANGUAGE));
   let amountOfLoan = READLINE.question();
-  // guard clause follows
+
   while (invalidLoanAmount(amountOfLoan)) {
     prompt(txtMessage("validAmount", currency, LANGUAGE));
     amountOfLoan = READLINE.question();
@@ -138,6 +123,7 @@ function continueCalculating(currency) {
     prompt(txtMessage("validInput", currency, LANGUAGE));
     answer = READLINE.question();
   }
+
   if (txtMessage('answerYes', currency, LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
   } else if (txtMessage('answerNo', currency, LANGUAGE).includes(answer.toLowerCase())) {
@@ -145,31 +131,13 @@ function continueCalculating(currency) {
     return false;
   }
   return true;
-
 }
-/*
-START
 
-GREETING
-  Ask for currency
+// program start
 
-GET loan amount
-
-GET APR in %
-  convert to number e.g. 5% => .05
-
-GET loan duration
-
-CALCULATE convert APR to months
-CALCULATE convert loan duration to months
-
-CALCULATE monthly payment
-
-REPEAT y/n
-
-no? => END
-*/
 do {
+  console.clear();
+
   let currencyType = askForCurrency();
 
   let loanAmount = askLoanAmount(currencyType);
@@ -182,4 +150,4 @@ do {
   let toPayMonthly = performCalculation(loanAmount, monthlyInterestRate, loanDuration);
   displayResult(toPayMonthly, currencyType);
 
-} while (continueCalculating());
+} while (continueCalculating()); // END or continue
