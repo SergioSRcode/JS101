@@ -74,7 +74,7 @@ function askLoanAmount(currency) {
     prompt(txtMessage("validAmount", currency, LANGUAGE));
     amountOfLoan = READLINE.question();
   }
-  return amountOfLoan;
+  return parseFloat(amountOfLoan);
 }
 
 function askForAPR(currency) {
@@ -103,17 +103,22 @@ function askLoanDuration(currency) {
   return durationInMonths;
 }
 
-// Calculation and result print
+// Calculation
 
 function performCalculation(lAmount, monthlyIRate, lDurationMonths) {
-  // eslint-disable-next-line max-len
-  let monthlyPayment = lAmount * (monthlyIRate / (1 - Math.pow((1 + monthlyIRate), (-lDurationMonths))));
+  let monthlyPayment = lAmount *
+                  (monthlyIRate /
+                  (1 - Math.pow((1 + monthlyIRate), (-lDurationMonths))));
   return monthlyPayment;
 }
+
+// printing result
 
 function displayResult(monthlyAmount, currency) {
   prompt(`${txtMessage("result", currency, LANGUAGE)} ${monthlyAmount.toFixed(2)}`);
 }
+
+// ask for another calculation, if yes => restart program
 
 function continueCalculating(currency) {
   prompt(txtMessage("anotherCalculation", currency, LANGUAGE));
