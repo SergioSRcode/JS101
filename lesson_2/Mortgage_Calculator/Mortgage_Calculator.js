@@ -37,12 +37,20 @@ function invalidAPR(annualPR) {
 
   return APR_IS_0 || !AMOUNT_IS_NUMERIC || APR_IS_100;
 }
+// works
+function invalidMonthsOrYears(monthsOrYears) {
+  const DURATION_IN_MONTHS = monthsOrYears === "1";
+  const DURATION_IN_YEARS = monthsOrYears === "2";
 
-function invalidLoanDuration(durationInYears) {
-  const DURATION_IS_0 = durationInYears === "0";
-  const IS_NUMERIC = durationInYears.match(/^[0-9.,]+$/);
+  return !DURATION_IN_MONTHS && !DURATION_IN_YEARS;
+}
+// doesn't work
+function invalidLoanDuration(duration) {
+  const DURATION_IS_0 = duration === "0" || duration === "-0";
+  const DURATION_IS_INFINITY = duration === Infinity || duration === -Infinity;
+  const IS_NUMERIC = duration.match(/^[0-9]+$/);
 
-  return DURATION_IS_0 || !IS_NUMERIC;
+  return DURATION_IS_0 || !IS_NUMERIC || DURATION_IS_INFINITY;
 }
 
 function validYesOrNo(response, currency) {
@@ -89,18 +97,49 @@ function askForAPR(currency) {
   let monthlyRate = (parseFloat(annualPR) / 100) / 12;
   return monthlyRate;
 }
-
-function askLoanDuration(currency) {
+// needs work
+function askDurationMonthsOrYears(currency) {
   prompt(txtMessage("loanDuration", currency, LANGUAGE));
-  let durationInYears = READLINE.question();
+  let monthsOrYears = READLINE.question();
 
-  while (invalidLoanDuration(durationInYears)) {
+  while (invalidMonthsOrYears(monthsOrYears)) {
     prompt(txtMessage("validDuration", currency, LANGUAGE));
-    durationInYears = READLINE.question();
+    monthsOrYears = READLINE.question();
+  }
+  return monthsOrYears;
+}
+// guard clause broke the code
+// eslint-disable-next-line max-lines-per-function
+function askLoanDuration(durationInMonthsOrYears, currency) {
+  let durationInMonths = "";
+  let durationInYears = "";
+  let isActive = "";
+
+  switch (durationInMonthsOrYears) {
+    case "1" :
+      prompt(txtMessage("durationInMonths", currency, LANGUAGE));
+      durationInMonths = READLINE.question();
+      isActive = durationInMonths;
+      break;
+    case "2" :
+      prompt(txtMessage("durationInYears", currency, LANGUAGE));
+      durationInYears = READLINE.question() * 12;
+      isActive = String(durationInYears);
+      break;
   }
 
-  let durationInMonths = parseFloat(durationInYears) * 12;
-  return durationInMonths;
+  if (durationInMonthsOrYears === "2") {
+    while (invalidLoanDuration(isActive)) {
+      prompt(txtMessage("validDuration", currency, LANGUAGE));
+      isActive = String(READLINE.question() * 12);
+    }
+  } else if (durationInMonthsOrYears === "1") {
+    while (invalidLoanDuration(isActive)) {
+      prompt(txtMessage("validDuration", currency, LANGUAGE));
+      isActive = READLINE.question();
+    }
+  }
+  return parseFloat(isActive);
 }
 
 // Calculation
@@ -149,7 +188,9 @@ do {
 
   let monthlyInterestRate = askForAPR(currencyType);
 
-  let loanDuration = askLoanDuration(currencyType);
+  let durationMonthsOrYears = askDurationMonthsOrYears(currencyType);
+
+  let loanDuration = askLoanDuration(durationMonthsOrYears, currencyType);
 
   // eslint-disable-next-line max-len
   let toPayMonthly = performCalculation(loanAmount, monthlyInterestRate, loanDuration);

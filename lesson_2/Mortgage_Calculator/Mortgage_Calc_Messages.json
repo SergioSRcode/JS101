@@ -7,13 +7,17 @@
       "validAmount" : "Hmmm...I don't think that makes sense. Try again!",
       "annualPercentageRate" : "fantastic, now what is the Annual Percentage Rate (APR) in % ?",
       "validAPR" : "That cannot be right, try again!",
-      "loanDuration" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in years?", 
+      "loanDuration" : "Would you at last like to indicate the loan duration in months or years?\nType 1 for months or 2 for years!", 
       "validDuration" : "Hmm...seems fishy to me, maybe check again?",
+      "durationInMonths" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in months?",
+      "durationInYears" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in years?",
       "result" : "The monthly amount is $",
       "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
       "validInput" : "I only accept yes or no for an answer!",
       "answerYes" : ["y", "yes"],
-      "answerNo" : ["n", "no"]
+      "answerNo" : ["n", "no"],
+      "durationMonths" : ["m", "months"],
+      "durationYears" : ["y", "years"]
     },
     "ger" : {
       "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
@@ -22,13 +26,17 @@
       "validAmount" : "Hmmm... ich glaube, das macht keinen Sinn. Versuchen Sie es noch einmal!",
       "annualPercentageRate" : "Fantastisch, wie lautet nun der effektive Jahreszins in %?",
       "validAPR" : "Das kann nicht stimmen, versuchen Sie es noch einmal!",
-      "loanDuration" : "Na gut, da wir sie alle erwischen wollen, wie lautet die Darlehenslaufzeit in Jahren?", 
+      "loanDuration" : "Möchten Sie zunächst noch die Darlehenslaufzeit in Monaten oder Jahren angeben?\nGib 1 für Monate oder 2 für Jahre ein!", 
       "validDuration" : "Hmm...kommt mir verdächtig vor, vielleicht noch einmal prüfen?",
+      "durationInMonths" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Monaten?",
+      "durationInYears" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Jahren?",
       "result" : "Der monatliche Betrag ist $",
       "anotherCalculation" : "Möchten Sie eine weitere Berechnung durchführen? (j/n)",
       "validInput" : "Ich akzeptiere nur Ja oder Nein als Antwort!",
       "answerYes" : ["j", "ja"],
-      "answerNo" : ["n", "nein"]
+      "answerNo" : ["n", "nein"],
+      "durationMonths" : ["m", "monate"],
+      "durationYears" : ["j", "jahre"]
     }
   },
   "€" : {
@@ -39,13 +47,17 @@
       "validAmount" : "Hmmm...I don't think that makes sense. Try again!",
       "annualPercentageRate" : "fantastic, now what is the Annual Percentage Rate (APR) in % ?",
       "validAPR" : "That cannot be right, try again!",
-      "loanDuration" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in years?", 
+      "loanDuration" : "Would you at last like to indicate the loan duration in months or years?\nType 1 for months or 2 for years!", 
       "validDuration" : "Hmm...seems fishy to me, maybe check again?",
+      "durationInMonths" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in months?",
+      "durationInYears" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in years?",
       "result" : "The monthly amount is €",
       "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
       "validInput" : "I only accept yes or no for an answer!",
       "answerYes" : ["y", "yes"],
-      "answerNo" : ["n", "no"]
+      "answerNo" : ["n", "no"],
+      "durationMonths" : ["m", "months"],
+      "durationYears" : ["y", "years"]
     },
     "ger" : {
       "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
@@ -54,13 +66,17 @@
       "validAmount" : "Hmmm... ich glaube, das macht keinen Sinn. Versuchen Sie es noch einmal!",
       "annualPercentageRate" : "Fantastisch, wie lautet nun der effektive Jahreszins in %?",
       "validAPR" : "Das kann nicht stimmen, versuchen Sie es noch einmal!",
-      "loanDuration" : "Na gut, da wir sie alle erwischen wollen, wie lautet die Darlehenslaufzeit in Jahren?", 
+      "loanDuration" : "Möchten Sie zunächst noch die Darlehenslaufzeit in Monaten oder Jahren angeben?\nGib 1 für Monate oder 2 für Jahre ein!", 
       "validDuration" : "Hmm...kommt mir verdächtig vor, vielleicht noch einmal prüfen?",
+      "durationInMonths" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Monaten?",
+      "durationInYears" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Jahren?",
       "result" : "Der monatliche Betrag ist €",
       "anotherCalculation" : "Möchten Sie eine weitere Berechnung durchführen? (j/n)",
       "validInput" : "Ich akzeptiere nur Ja oder Nein als Antwort!",
       "answerYes" : ["j", "ja"],
-      "answerNo" : ["n", "nein"]
+      "answerNo" : ["n", "nein"],
+      "durationMonths" : ["m", "monate"],
+      "durationYears" : ["j", "jahre"]
     }
   }
 }
