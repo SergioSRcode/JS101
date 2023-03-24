@@ -46,7 +46,7 @@ function invalidMonthsOrYears(monthsOrYears) {
 
   return !DURATION_IN_MONTHS && !DURATION_IN_YEARS;
 }
-// doesn't work
+
 function invalidLoanDuration(duration) {
   const DURATION_IS_0 = duration === "0" || duration === "-0";
   const DURATION_IS_INFINITY = duration === Infinity || duration === -Infinity;
