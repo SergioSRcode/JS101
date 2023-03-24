@@ -1,7 +1,7 @@
 {
   "$" : {
     "en" : {
-      "welcome" : "Welcome to MorCa, the morgage calculator.\nIn what currency would you like to perform the calculation? ($/€)",
+      "welcome" : "Welcome to MorCa, the morgage calculator.\n\nIn what currency would you like to perform the calculation? ($/€)",
       "validCurrency" : "Please choose either $ or €!",
       "loanAmount" : "What is the loan amount?",
       "validAmount" : "Hmmm...I don't think that makes sense. Try again!",
@@ -20,7 +20,7 @@
       "durationYears" : ["y", "years"]
     },
     "ger" : {
-      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
+      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
       "validCurrency" : "Bitte wählen Sie entweder $ oder €!",
       "loanAmount" : "Wie hoch ist der Darlehensbetrag?",
       "validAmount" : "Hmmm... ich glaube, das macht keinen Sinn. Versuchen Sie es noch einmal!",
@@ -41,7 +41,7 @@
   },
   "€" : {
     "en" : {
-      "welcome" : "Welcome to MorCa, the morgage calculator.\nIn what currency would you like to perform the calculation? ($/€)",
+      "welcome" : "Welcome to MorCa, the morgage calculator.\n\nIn what currency would you like to perform the calculation? ($/€)",
       "validCurrency" : "Please choose either $ or €!",
       "loanAmount" : "What is the loan amount?",
       "validAmount" : "Hmmm...I don't think that makes sense. Try again!",
@@ -60,7 +60,7 @@
       "durationYears" : ["y", "years"]
     },
     "ger" : {
-      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
+      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
       "validCurrency" : "Bitte wählen Sie entweder $ oder €!",
       "loanAmount" : "Wie hoch ist der Darlehensbetrag?",
       "validAmount" : "Hmmm... ich glaube, das macht keinen Sinn. Versuchen Sie es noch einmal!",

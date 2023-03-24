@@ -11,7 +11,8 @@ function txtMessage(message, currency = "$", lang = "en") {
 }
 
 function prompt(message) {
-  console.log(`👉 ${message}`);
+  console.log(`👉 ${message}\n
+<---------------------------------------------->\n`);
 }
 
 // guard clause functions
@@ -25,7 +26,8 @@ function invalidCurrency(chosenCurrency) {
 
 function invalidLoanAmount(amountOfLoan) {
   const AMOUNT_IS_0 = amountOfLoan === "0";
-  const AMOUNT_IS_NUMERIC = amountOfLoan.match(/^[0-9]+$/);
+  const AMOUNT_IS_NUMERIC =
+                amountOfLoan.match(/^[+-]?((\d+(\.\d*)?)|(\.\d+))$/);
 
   return AMOUNT_IS_0 || !AMOUNT_IS_NUMERIC;
 }
@@ -33,7 +35,7 @@ function invalidLoanAmount(amountOfLoan) {
 function invalidAPR(annualPR) {
   const APR_IS_0 = annualPR === "0";
   const APR_IS_100 = annualPR === "100";
-  const AMOUNT_IS_NUMERIC = annualPR.match(/^[0-9]+$/);
+  const AMOUNT_IS_NUMERIC = annualPR.match(/^(\d+(\.\d*)?)$/);
 
   return APR_IS_0 || !AMOUNT_IS_NUMERIC || APR_IS_100;
 }
@@ -108,7 +110,7 @@ function askDurationMonthsOrYears(currency) {
   }
   return monthsOrYears;
 }
-// guard clause broke the code
+
 // eslint-disable-next-line max-lines-per-function
 function askLoanDuration(durationInMonthsOrYears, currency) {
   let durationInMonths = "";
