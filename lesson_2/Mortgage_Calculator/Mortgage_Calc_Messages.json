@@ -15,9 +15,7 @@
       "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
       "validInput" : "I only accept yes or no for an answer!",
       "answerYes" : ["y", "yes"],
-      "answerNo" : ["n", "no"],
-      "durationMonths" : ["m", "months"],
-      "durationYears" : ["y", "years"]
+      "answerNo" : ["n", "no"]
     },
     "ger" : {
       "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen?\n1)=> $\n2)=> €",
@@ -34,9 +32,7 @@
       "anotherCalculation" : "Möchten Sie eine weitere Berechnung durchführen? (j/n)",
       "validInput" : "Ich akzeptiere nur Ja oder Nein als Antwort!",
       "answerYes" : ["j", "ja"],
-      "answerNo" : ["n", "nein"],
-      "durationMonths" : ["m", "monate"],
-      "durationYears" : ["j", "jahre"]
+      "answerNo" : ["n", "nein"]
     }
   },
   "2" : {
@@ -55,9 +51,7 @@
       "anotherCalculation" : "Would you like to perform another calculation? (y/n)",
       "validInput" : "I only accept yes or no for an answer!",
       "answerYes" : ["y", "yes"],
-      "answerNo" : ["n", "no"],
-      "durationMonths" : ["m", "months"],
-      "durationYears" : ["y", "years"]
+      "answerNo" : ["n", "no"]
     },
     "ger" : {
       "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen?\n1)=> $\n2)=> €",
@@ -74,9 +68,7 @@
       "anotherCalculation" : "Möchten Sie eine weitere Berechnung durchführen? (j/n)",
       "validInput" : "Ich akzeptiere nur Ja oder Nein als Antwort!",
       "answerYes" : ["j", "ja"],
-      "answerNo" : ["n", "nein"],
-      "durationMonths" : ["m", "monate"],
-      "durationYears" : ["j", "jahre"]
+      "answerNo" : ["n", "nein"]
     }
   }
 }

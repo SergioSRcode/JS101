@@ -39,7 +39,7 @@ function invalidAPR(annualPR) {
 
   return APR_IS_0 || !AMOUNT_IS_NUMERIC || APR_IS_100;
 }
-// works
+
 function invalidMonthsOrYears(monthsOrYears) {
   const DURATION_IN_MONTHS = monthsOrYears === "1";
   const DURATION_IN_YEARS = monthsOrYears === "2";
@@ -144,7 +144,7 @@ function askLoanDuration(durationInMonthsOrYears, currency) {
   return parseFloat(chosenDuration);
 }
 
-// Calculation
+// Calculation of the monthly due amount
 
 function performCalculation(lAmount, monthlyIRate, lDurationMonths) {
   let monthlyPayment = lAmount *
@@ -163,16 +163,16 @@ function displayResult(monthlyAmount, currency) {
 
 function continueCalculating(currency) {
   prompt(retrieveMessage("anotherCalculation", currency, LANGUAGE));
-  let answer = READLINE.question();
+  let answer = READLINE.question().toLowerCase();
 
   while (validYesOrNo(answer, currency)) {
     prompt(retrieveMessage("validInput", currency, LANGUAGE));
-    answer = READLINE.question();
+    answer = READLINE.question().toLowerCase();
   }
 
-  if (retrieveMessage('answerYes', currency, LANGUAGE).includes(answer.toLowerCase())) {
+  if (retrieveMessage('answerYes', currency, LANGUAGE).includes(answer)) {
     console.clear();
-  } else if (retrieveMessage('answerNo', currency, LANGUAGE).includes(answer.toLowerCase())) {
+  } else if (retrieveMessage('answerNo', currency, LANGUAGE).includes(answer)) {
     console.clear();
     return false;
   }
