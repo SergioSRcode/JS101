@@ -1,13 +1,13 @@
 {
-  "$" : {
+  "1" : {
     "en" : {
-      "welcome" : "Welcome to MorCa, the morgage calculator.\n\nIn what currency would you like to perform the calculation? ($/€)",
-      "validCurrency" : "Please choose either $ or €!",
+      "welcome" : "Welcome to MorCa, the morgage calculator.\n\nIn what currency would you like to perform the calculation?\n1)=> $\n2)=> €",
+      "validCurrency" : "Please choose either\n1) for $\nor\n2) for €!",
       "loanAmount" : "What is the loan amount?",
       "validAmount" : "Hmmm...I don't think that makes sense. Try again!",
       "annualPercentageRate" : "fantastic, now what is the Annual Percentage Rate (APR) in % ?",
       "validAPR" : "That cannot be right, try again!",
-      "loanDuration" : "Would you at last like to indicate the loan duration in months or years?\nType 1 for months or 2 for years!", 
+      "loanDuration" : "Would you at last like to indicate the loan duration in months or years?\nType:\n1 for months\nor\n2 for years!", 
       "validDuration" : "Hmm...seems fishy to me, maybe check again?",
       "durationInMonths" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in months?",
       "durationInYears" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in years?",
@@ -20,13 +20,13 @@
       "durationYears" : ["y", "years"]
     },
     "ger" : {
-      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
-      "validCurrency" : "Bitte wählen Sie entweder $ oder €!",
+      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen?\n1)=> $\n2)=> €",
+      "validCurrency" : "Bitte wählen Sie entweder\n1) für $\noder\n2) für €!",
       "loanAmount" : "Wie hoch ist der Darlehensbetrag?",
       "validAmount" : "Hmmm... ich glaube, das macht keinen Sinn. Versuchen Sie es noch einmal!",
       "annualPercentageRate" : "Fantastisch, wie lautet nun der effektive Jahreszins in %?",
       "validAPR" : "Das kann nicht stimmen, versuchen Sie es noch einmal!",
-      "loanDuration" : "Möchten Sie zunächst noch die Darlehenslaufzeit in Monaten oder Jahren angeben?\nGib 1 für Monate oder 2 für Jahre ein!", 
+      "loanDuration" : "Möchten Sie zunächst noch die Darlehenslaufzeit in Monaten oder Jahren angeben?\nGib\n1 für Monate\noder\n2 für Jahre ein!", 
       "validDuration" : "Hmm...kommt mir verdächtig vor, vielleicht noch einmal prüfen?",
       "durationInMonths" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Monaten?",
       "durationInYears" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Jahren?",
@@ -39,15 +39,15 @@
       "durationYears" : ["j", "jahre"]
     }
   },
-  "€" : {
+  "2" : {
     "en" : {
-      "welcome" : "Welcome to MorCa, the morgage calculator.\n\nIn what currency would you like to perform the calculation? ($/€)",
-      "validCurrency" : "Please choose either $ or €!",
+      "welcome" : "Welcome to MorCa, the morgage calculator.\n\nIn what currency would you like to perform the calculation?\n1)=> $\n2)=> €",
+      "validCurrency" : "Please choose either\n1) for $\nor\n2) for €!",
       "loanAmount" : "What is the loan amount?",
       "validAmount" : "Hmmm...I don't think that makes sense. Try again!",
       "annualPercentageRate" : "fantastic, now what is the Annual Percentage Rate (APR) in % ?",
       "validAPR" : "That cannot be right, try again!",
-      "loanDuration" : "Would you at last like to indicate the loan duration in months or years?\nType 1 for months or 2 for years!", 
+      "loanDuration" : "Would you at last like to indicate the loan duration in months or years?\nType:\n1 for months\nor\n2 for years!", 
       "validDuration" : "Hmm...seems fishy to me, maybe check again?",
       "durationInMonths" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in months?",
       "durationInYears" : "Alright, since we wanna catch'em all,\nWhat is the loan duration in years?",
@@ -60,13 +60,13 @@
       "durationYears" : ["y", "years"]
     },
     "ger" : {
-      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen? ($/€)",
-      "validCurrency" : "Bitte wählen Sie entweder $ oder €!",
+      "welcome" : "Willkommen bei MorCa, dem Hypothekenrechner.\n\nIn welcher Währung möchten Sie die Berechnung durchführen?\n1)=> $\n2)=> €",
+      "validCurrency" : "Bitte wählen Sie entweder\n1) für $\noder\n2) für €!",
       "loanAmount" : "Wie hoch ist der Darlehensbetrag?",
       "validAmount" : "Hmmm... ich glaube, das macht keinen Sinn. Versuchen Sie es noch einmal!",
       "annualPercentageRate" : "Fantastisch, wie lautet nun der effektive Jahreszins in %?",
       "validAPR" : "Das kann nicht stimmen, versuchen Sie es noch einmal!",
-      "loanDuration" : "Möchten Sie zunächst noch die Darlehenslaufzeit in Monaten oder Jahren angeben?\nGib 1 für Monate oder 2 für Jahre ein!", 
+      "loanDuration" : "Möchten Sie zunächst noch die Darlehenslaufzeit in Monaten oder Jahren angeben?\nGib\n1 für Monate\noder\n2 für Jahre ein!", 
       "validDuration" : "Hmm...kommt mir verdächtig vor, vielleicht noch einmal prüfen?",
       "durationInMonths" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Monaten?",
       "durationInYears" : "Okay, da das Motto lautet 'schnapp sie dir alle!',\nWie hoch ist die Darlehenlaufzeit in Jahren?",

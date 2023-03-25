@@ -6,19 +6,19 @@ const LANGUAGE = "en";
 
 // helper functions
 
-function txtMessage(message, currency = "$", lang = "en") {
+function txtMessage(message, currency = "1", lang = "en") {
   return MESSAGES[currency][lang][message];
 }
 
 function prompt(message) {
-  console.log(`👉 ${message}\n
-<---------------------------------------------->\n`);
+  console.log(`\n👉 ${message}\n
+<---------------------------------------------->`);
 }
 
 // guard clause functions
 
 function invalidCurrency(chosenCurrency) {
-  const VALID_CURRENCY = ["$", "€"];
+  const VALID_CURRENCY = ["1", "2"];
   const CURRENCY_OF_CHOICE = VALID_CURRENCY.includes(chosenCurrency);
 
   return !CURRENCY_OF_CHOICE;
@@ -65,7 +65,7 @@ function validYesOrNo(response, currency) {
 // Collecting functions
 
 function askForCurrency() {
-  let currency = "$";
+  let currency = "1";
   prompt(txtMessage("welcome", currency, LANGUAGE));
   currency = READLINE.question();
   // guard clause for invalid currency input
@@ -115,33 +115,33 @@ function askDurationMonthsOrYears(currency) {
 function askLoanDuration(durationInMonthsOrYears, currency) {
   let durationInMonths = "";
   let durationInYears = "";
-  let isActive = "";
+  let chosenDuration = "";
 
   switch (durationInMonthsOrYears) {
     case "1" :
       prompt(txtMessage("durationInMonths", currency, LANGUAGE));
       durationInMonths = READLINE.question();
-      isActive = durationInMonths;
+      chosenDuration = durationInMonths;
       break;
     case "2" :
       prompt(txtMessage("durationInYears", currency, LANGUAGE));
       durationInYears = READLINE.question() * 12;
-      isActive = String(durationInYears);
+      chosenDuration = String(durationInYears);
       break;
   }
 
   if (durationInMonthsOrYears === "2") {
-    while (invalidLoanDuration(isActive)) {
+    while (invalidLoanDuration(chosenDuration)) {
       prompt(txtMessage("validDuration", currency, LANGUAGE));
-      isActive = String(READLINE.question() * 12);
+      chosenDuration = String(READLINE.question() * 12);
     }
   } else if (durationInMonthsOrYears === "1") {
-    while (invalidLoanDuration(isActive)) {
+    while (invalidLoanDuration(chosenDuration)) {
       prompt(txtMessage("validDuration", currency, LANGUAGE));
-      isActive = READLINE.question();
+      chosenDuration = READLINE.question();
     }
   }
-  return parseFloat(isActive);
+  return parseFloat(chosenDuration);
 }
 
 // Calculation
