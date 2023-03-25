@@ -6,7 +6,7 @@ const LANGUAGE = "en";
 
 // helper functions
 
-function txtMessage(message, currency = "1", lang = "en") {
+function retrieveMessage(message, currency = "1", lang = "en") {
   return MESSAGES[currency][lang][message];
 }
 
@@ -56,8 +56,8 @@ function invalidLoanDuration(duration) {
 }
 
 function validYesOrNo(response, currency) {
-  const answerIsYes = txtMessage('answerYes', currency, LANGUAGE).includes(response.toLowerCase());
-  const answerIsNo = txtMessage('answerNo', currency, LANGUAGE).includes(response.toLowerCase());
+  const answerIsYes = retrieveMessage('answerYes', currency, LANGUAGE).includes(response.toLowerCase());
+  const answerIsNo = retrieveMessage('answerNo', currency, LANGUAGE).includes(response.toLowerCase());
 
   return !answerIsYes && !answerIsNo;
 }
@@ -66,46 +66,46 @@ function validYesOrNo(response, currency) {
 
 function askForCurrency() {
   let currency = "1";
-  prompt(txtMessage("welcome", currency, LANGUAGE));
+  prompt(retrieveMessage("welcome", currency, LANGUAGE));
   currency = READLINE.question();
   // guard clause for invalid currency input
   while (invalidCurrency(currency)) {
-    prompt(txtMessage("validCurrency"));
+    prompt(retrieveMessage("validCurrency"));
     currency = READLINE.question();
   }
   return currency;
 }
 
 function askLoanAmount(currency) {
-  prompt(txtMessage("loanAmount", currency, LANGUAGE));
+  prompt(retrieveMessage("loanAmount", currency, LANGUAGE));
   let amountOfLoan = READLINE.question();
 
   while (invalidLoanAmount(amountOfLoan)) {
-    prompt(txtMessage("validAmount", currency, LANGUAGE));
+    prompt(retrieveMessage("validAmount", currency, LANGUAGE));
     amountOfLoan = READLINE.question();
   }
   return parseFloat(amountOfLoan);
 }
 
 function askForAPR(currency) {
-  prompt(txtMessage("annualPercentageRate", currency, LANGUAGE));
+  prompt(retrieveMessage("annualPercentageRate", currency, LANGUAGE));
   let annualPR = READLINE.question();
 
   while (invalidAPR(annualPR)) {
-    prompt(txtMessage("validAPR", currency, LANGUAGE));
+    prompt(retrieveMessage("validAPR", currency, LANGUAGE));
     annualPR = READLINE.question();
   }
 
   let monthlyRate = (parseFloat(annualPR) / 100) / 12;
   return monthlyRate;
 }
-// needs work
+
 function askDurationMonthsOrYears(currency) {
-  prompt(txtMessage("loanDuration", currency, LANGUAGE));
+  prompt(retrieveMessage("loanDuration", currency, LANGUAGE));
   let monthsOrYears = READLINE.question();
 
   while (invalidMonthsOrYears(monthsOrYears)) {
-    prompt(txtMessage("validDuration", currency, LANGUAGE));
+    prompt(retrieveMessage("validDuration", currency, LANGUAGE));
     monthsOrYears = READLINE.question();
   }
   return monthsOrYears;
@@ -119,12 +119,12 @@ function askLoanDuration(durationInMonthsOrYears, currency) {
 
   switch (durationInMonthsOrYears) {
     case "1" :
-      prompt(txtMessage("durationInMonths", currency, LANGUAGE));
+      prompt(retrieveMessage("durationInMonths", currency, LANGUAGE));
       durationInMonths = READLINE.question();
       chosenDuration = durationInMonths;
       break;
     case "2" :
-      prompt(txtMessage("durationInYears", currency, LANGUAGE));
+      prompt(retrieveMessage("durationInYears", currency, LANGUAGE));
       durationInYears = READLINE.question() * 12;
       chosenDuration = String(durationInYears);
       break;
@@ -132,12 +132,12 @@ function askLoanDuration(durationInMonthsOrYears, currency) {
 
   if (durationInMonthsOrYears === "2") {
     while (invalidLoanDuration(chosenDuration)) {
-      prompt(txtMessage("validDuration", currency, LANGUAGE));
+      prompt(retrieveMessage("validDuration", currency, LANGUAGE));
       chosenDuration = String(READLINE.question() * 12);
     }
   } else if (durationInMonthsOrYears === "1") {
     while (invalidLoanDuration(chosenDuration)) {
-      prompt(txtMessage("validDuration", currency, LANGUAGE));
+      prompt(retrieveMessage("validDuration", currency, LANGUAGE));
       chosenDuration = READLINE.question();
     }
   }
@@ -156,23 +156,23 @@ function performCalculation(lAmount, monthlyIRate, lDurationMonths) {
 // printing result
 
 function displayResult(monthlyAmount, currency) {
-  prompt(`${txtMessage("result", currency, LANGUAGE)} ${monthlyAmount.toFixed(2)}`);
+  prompt(`${retrieveMessage("result", currency, LANGUAGE)} ${monthlyAmount.toFixed(2)}`);
 }
 
 // ask for another calculation, if yes => restart program
 
 function continueCalculating(currency) {
-  prompt(txtMessage("anotherCalculation", currency, LANGUAGE));
+  prompt(retrieveMessage("anotherCalculation", currency, LANGUAGE));
   let answer = READLINE.question();
 
   while (validYesOrNo(answer, currency)) {
-    prompt(txtMessage("validInput", currency, LANGUAGE));
+    prompt(retrieveMessage("validInput", currency, LANGUAGE));
     answer = READLINE.question();
   }
 
-  if (txtMessage('answerYes', currency, LANGUAGE).includes(answer.toLowerCase())) {
+  if (retrieveMessage('answerYes', currency, LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
-  } else if (txtMessage('answerNo', currency, LANGUAGE).includes(answer.toLowerCase())) {
+  } else if (retrieveMessage('answerNo', currency, LANGUAGE).includes(answer.toLowerCase())) {
     console.clear();
     return false;
   }
