@@ -1,6 +1,7 @@
 // meta data
 const READLINE = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
+const VALID_ABBREVIATIONS = ["r", "p", "sc", "l", "sp"];
 const ANSWER_YES_OR_NO = ["y", "yes", "n", "no"];
 
 // helper function
@@ -15,9 +16,12 @@ function codeDivider() {
 // program functions
 function getUserChoice() {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
+  prompt(`You can type respectively:
+    ${VALID_ABBREVIATIONS.join(", ")}`)
   let userChoice = READLINE.question().toLowerCase();
 
-  while (!VALID_CHOICES.includes(userChoice)) {
+  while (!VALID_CHOICES.includes(userChoice) &&
+        !VALID_ABBREVIATIONS.includes(userChoice)) {
     prompt("That's not a valid choice");
     userChoice = READLINE.question();
   }
