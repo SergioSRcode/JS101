@@ -27,8 +27,16 @@ function getUserChoice() {
 
   while (!VALID_CHOICES.includes(userChoice) &&
         !VALID_ABBREVIATIONS.includes(userChoice)) {
-    prompt("That's not a valid choice");
-    userChoice = READLINE.question();
+    prompt("That's not a valid choice, try again!");
+    userChoice = READLINE.question().toLowerCase();
+  }
+  // turn abbreviation into full word
+  if (VALID_ABBREVIATIONS.includes(userChoice)) {
+    for (let i = 0; i < VALID_ABBREVIATIONS.length; i++) {
+      if (userChoice === VALID_ABBREVIATIONS[i]) {
+        userChoice = VALID_CHOICES[i];
+      }
+    }
   }
   return userChoice;
 }
@@ -48,11 +56,16 @@ function displayChoices(userChoice, computerChoice) {
 function displayWinner(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
     prompt("It's a tie!");
-  } else if ((userChoice === "rock" && (computerChoice === "scissors" || computerChoice === "lizard")) ||
-        (userChoice === "scissors" && (computerChoice === "paper" || computerChoice === "lizard")) ||
-        (userChoice === "paper" && (computerChoice === "rock" || computerChoice === "spock")) ||
-        (userChoice === "spock" && (computerChoice === "scissors" || computerChoice === "rock")) ||
-        (userChoice === "lizard" && (computerChoice === "paper" || computerChoice === "spock"))) {
+  } else if ((ROCK.includes(userChoice) &&
+      (SCISSORS.includes(computerChoice) || LIZARD.includes(computerChoice))) ||
+        (userChoice === SCISSORS.includes(userChoice) &&
+      (PAPER.includes(computerChoice) || LIZARD.includes(computerChoice))) ||
+        (PAPER.includes(userChoice) &&
+      (ROCK.includes(computerChoice) || SPOCK.includes(computerChoice))) ||
+        (SPOCK.includes(userChoice) &&
+      (SCISSORS.includes(computerChoice) || ROCK.includes(computerChoice))) ||
+        (LIZARD.includes(userChoice) &&
+      (PAPER.includes(computerChoice) || SPOCK.includes(computerChoice)))) {
     prompt("You won!");
   } else {
     prompt("Computer won!");
