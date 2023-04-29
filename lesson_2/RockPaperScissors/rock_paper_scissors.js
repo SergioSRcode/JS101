@@ -1,6 +1,6 @@
 // meta data
 const READLINE = require("readline-sync");
-const VALID_CHOICES = ["rock", "paper", "scissors"];
+const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const ANSWER_YES_OR_NO = ["y", "yes", "n", "no"];
 
 // helper function
@@ -35,17 +35,18 @@ function displayChoices(userChoice, computerChoice) {
   prompt(`You chose ${userChoice.toUpperCase()}, computer chose ${computerChoice.toUpperCase()}`);
 }
 
+// eslint-disable-next-line complexity
 function displayWinner(userChoice, computerChoice) {
-  if ((userChoice === "rock" && computerChoice === "scissors") ||
-        (userChoice === "scissors" && computerChoice === "paper") ||
-        (userChoice === "paper" && computerChoice === "rock")) {
-    prompt("You won!");
-  } else if ((computerChoice === "rock" && userChoice === "scissors") ||
-        (computerChoice === "scissors" && userChoice === "paper") ||
-        (computerChoice === "paper" && userChoice === "rock")) {
-    prompt("Computer won!");
-  } else {
+  if (userChoice === computerChoice) {
     prompt("It's a tie!");
+  } else if ((userChoice === "rock" && (computerChoice === "scissors" || computerChoice === "lizard")) ||
+        (userChoice === "scissors" && (computerChoice === "paper" || computerChoice === "lizard")) ||
+        (userChoice === "paper" && (computerChoice === "rock" || computerChoice === "spock")) ||
+        (userChoice === "spock" && (computerChoice === "scissors" || computerChoice === "rock")) ||
+        (userChoice === "lizard" && (computerChoice === "paper" || computerChoice === "spock"))) {
+    prompt("You won!");
+  } else {
+    prompt("Computer won!");
   }
 }
 
