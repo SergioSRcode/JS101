@@ -2,6 +2,11 @@
 const READLINE = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_ABBREVIATIONS = ["r", "p", "sc", "l", "sp"];
+const ROCK = ["rock", "r"];
+const PAPER = ["paper", "p"];
+const SCISSORS = ["scissors", "sc"];
+const LIZARD = ["lizard", "l"];
+const SPOCK = ["spock", "sp"];
 const ANSWER_YES_OR_NO = ["y", "yes", "n", "no"];
 
 // helper function
