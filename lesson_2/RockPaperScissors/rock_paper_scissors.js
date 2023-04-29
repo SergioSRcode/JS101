@@ -9,6 +9,12 @@ const LIZARD = ["lizard", "l"];
 const SPOCK = ["spock", "sp"];
 const ANSWER_YES_OR_NO = ["y", "yes", "n", "no"];
 
+// counter
+let round = 1;
+let win = 0;
+let loss = 0;
+let tie = 0;
+
 // helper function
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -22,7 +28,7 @@ function codeDivider() {
 function getUserChoice() {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
   prompt(`You can type respectively:
-    ${VALID_ABBREVIATIONS.join(", ")}`)
+    ${VALID_ABBREVIATIONS.join(", ")}`);
   let userChoice = READLINE.question().toLowerCase();
 
   while (!VALID_CHOICES.includes(userChoice) &&
@@ -32,6 +38,7 @@ function getUserChoice() {
   }
   // turn abbreviation into full word
   if (VALID_ABBREVIATIONS.includes(userChoice)) {
+    // eslint-disable-next-line id-length
     for (let i = 0; i < VALID_ABBREVIATIONS.length; i++) {
       if (userChoice === VALID_ABBREVIATIONS[i]) {
         userChoice = VALID_CHOICES[i];
@@ -53,9 +60,9 @@ function displayChoices(userChoice, computerChoice) {
 }
 
 // eslint-disable-next-line complexity
-function displayWinner(userChoice, computerChoice) {
+function getWinnerOfRound(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
-    prompt("It's a tie!");
+    return "tie";
   } else if ((ROCK.includes(userChoice) &&
       (SCISSORS.includes(computerChoice) || LIZARD.includes(computerChoice))) ||
         (userChoice === SCISSORS.includes(userChoice) &&
@@ -66,9 +73,53 @@ function displayWinner(userChoice, computerChoice) {
       (SCISSORS.includes(computerChoice) || ROCK.includes(computerChoice))) ||
         (LIZARD.includes(userChoice) &&
       (PAPER.includes(computerChoice) || SPOCK.includes(computerChoice)))) {
-    prompt("You won!");
+    return "user";
   } else {
-    prompt("Computer won!");
+    return "computer";
+  }
+}
+
+function displayWinnerOfRound(winner) {
+  if (winner === "user") {
+    prompt("Cool, you won this round!");
+  } else if (winner === "computer") {
+    prompt("Computer won this round.");
+  } else {
+    prompt("Close! It's a tie for this round!");
+  }
+}
+
+function winCounter(winnerOfRound) {
+  switch (winnerOfRound) {
+    case "user" :
+      win += 1;
+      break;
+    case "computer" :
+      loss += 1;
+      break;
+    case "tie" :
+      tie += 1;
+      break;
+  }
+  round += 1;
+}
+
+function displayGameWinner(win, loss, tie) {
+  if (win === 3) {
+    prompt("Congrats! You won the game!");
+    round = 5;
+  } else if (loss === 3) {
+    prompt("The computer won the game! Better luck next time!");
+    round = 5;
+  } else if (tie >= 3 && win > loss) {
+    prompt("Wow, you won the game by a narrow margin");
+    round = 5;
+  } else if (tie >= 3 && win < loss) {
+    prompt("The computer won the game but it was very close!");
+    round = 5;
+  } else if (tie >= 3 && win === loss) {
+    prompt("wow, the game ends in a tie...that's some skill right there!");
+    round = 5;
   }
 }
 
@@ -91,8 +142,11 @@ function continuePlaying() {
 // program start
 
 do {
-
   console.clear();
+
+  console.log(`Round No. ${round}`);
+
+  codeDivider();
 
   let userChoice = getUserChoice();
   let computerChoice = getComputerChoice();
@@ -100,8 +154,11 @@ do {
   codeDivider();
 
   displayChoices(userChoice, computerChoice);
-  displayWinner(userChoice, computerChoice);
+  let winnerOfRound = getWinnerOfRound(userChoice, computerChoice);
+  displayWinnerOfRound(winnerOfRound);
 
-  codeDivider();
+  winCounter(winnerOfRound);
+
+  displayGameWinner(win, loss, tie);
 
 } while (continuePlaying());
