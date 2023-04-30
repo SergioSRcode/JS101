@@ -9,7 +9,7 @@ const LIZARD = ["lizard", "l"];
 const SPOCK = ["spock", "sp"];
 const ANSWER_YES_OR_NO = ["y", "yes", "n", "no"];
 
-// counter
+// counters
 let round = 1;
 let win = 0;
 let loss = 0;
@@ -59,19 +59,22 @@ function displayChoices(userChoice, computerChoice) {
   prompt(`You chose ${userChoice.toUpperCase()}, computer chose ${computerChoice.toUpperCase()}`);
 }
 
-// eslint-disable-next-line complexity
 function getWinnerOfRound(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
     return "tie";
   } else if ((ROCK.includes(userChoice) &&
       (SCISSORS.includes(computerChoice) || LIZARD.includes(computerChoice))) ||
-        (userChoice === SCISSORS.includes(userChoice) &&
+
+      (SCISSORS.includes(userChoice) &&
       (PAPER.includes(computerChoice) || LIZARD.includes(computerChoice))) ||
-        (PAPER.includes(userChoice) &&
+
+      (PAPER.includes(userChoice) &&
       (ROCK.includes(computerChoice) || SPOCK.includes(computerChoice))) ||
-        (SPOCK.includes(userChoice) &&
+
+      (SPOCK.includes(userChoice) &&
       (SCISSORS.includes(computerChoice) || ROCK.includes(computerChoice))) ||
-        (LIZARD.includes(userChoice) &&
+
+      (LIZARD.includes(userChoice) &&
       (PAPER.includes(computerChoice) || SPOCK.includes(computerChoice)))) {
     return "user";
   } else {
@@ -106,10 +109,10 @@ function winCounter(winnerOfRound) {
 
 function displayGameWinner(win, loss, tie) {
   if (win === 3) {
-    prompt("Congrats! You won the game!");
+    prompt(`Congrats! You won the game and won ${win} rounds total!`);
     round = 5;
   } else if (loss === 3) {
-    prompt("The computer won the game! Better luck next time!");
+    prompt(`The computer won the game by winning ${loss} rounds! Better luck next time!`);
     round = 5;
   } else if (tie >= 3 && win > loss) {
     prompt("Wow, you won the game by a narrow margin");
@@ -133,6 +136,7 @@ function continuePlaying() {
   }
 
   if (answer === "n" || answer === "no") {
+    console.clear();
     return false;
   } else {
     return true;
@@ -141,24 +145,35 @@ function continuePlaying() {
 
 // program start
 
+function playRound() {
+  while (round < 5) {
+
+    codeDivider();
+
+    console.log(`Round No. ${round}  [Wins: ${win}] - [Losses: ${loss}] - [Ties: ${tie}]`);
+
+    codeDivider();
+
+    let userChoice = getUserChoice();
+    let computerChoice = getComputerChoice();
+
+    codeDivider();
+
+    displayChoices(userChoice, computerChoice);
+    let winnerOfRound = getWinnerOfRound(userChoice, computerChoice);
+    displayWinnerOfRound(winnerOfRound);
+
+    codeDivider();
+
+    winCounter(winnerOfRound);
+
+    displayGameWinner(win, loss, tie);
+  }
+}
+
 do {
   console.clear();
 
-  console.log(`Round No. ${round}`);
-
-  codeDivider();
-
-  let userChoice = getUserChoice();
-  let computerChoice = getComputerChoice();
-
-  codeDivider();
-
-  displayChoices(userChoice, computerChoice);
-  let winnerOfRound = getWinnerOfRound(userChoice, computerChoice);
-  displayWinnerOfRound(winnerOfRound);
-
-  winCounter(winnerOfRound);
-
-  displayGameWinner(win, loss, tie);
+  playRound();
 
 } while (continuePlaying());
