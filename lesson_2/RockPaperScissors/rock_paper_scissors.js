@@ -174,7 +174,10 @@ function playRound() {
 do {
   console.clear();
 
-  prompt("Welcome to RPS, the game for gamers all around the globe! - Note: The AI used is called 'lesser GPT'.");
+  prompt(`Welcome to RPS, the game for gamers all around the globe! 
+  - Note: The AI used is called "lesser GPT".`);
+
+  codeDivider();
 
   playRound();
 
