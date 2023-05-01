@@ -37,6 +37,17 @@ function displayScore() {
   console.log(`Round No. ${round}  [Wins: ${win}] - [Losses: ${loss}] - [Ties: ${tie}]`);
 }
 
+function userWins(userChoice, computerChoice) {
+  return WINNING_COMBOS[userChoice].includes(computerChoice);
+}
+
+function resetScores() {
+  round = 1;
+  win = 0;
+  loss = 0;
+  tie = 0;
+}
+
 // program functions
 function getUserChoice() {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
@@ -75,7 +86,7 @@ function displayChoices(userChoice, computerChoice) {
 function getWinnerOfRound(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
     return "tie";
-  } else if (WINNING_COMBOS[userChoice].includes(computerChoice)) {
+  } else if (userWins(userChoice, computerChoice)) {
     return "user";
   } else {
     return "computer";
@@ -107,22 +118,27 @@ function winCounter(winnerOfRound) {
   round += 1;
 }
 
+// eslint-disable-next-line max-lines-per-function
 function displayGameWinner(win, loss, tie) {
   if (win === 3) {
     prompt(`Congrats! You won the game and won ${win} rounds total!`);
-    round = 5;
+    round = 6;
   } else if (loss === 3) {
     prompt(`The computer won the game by winning ${loss} rounds! Better luck next time!`);
-    round = 5;
-  } else if (tie >= 3 && win > loss) {
+    round = 6;
+  } else if (round === 6 && ((win < 3) && (win > loss))) {
     prompt("Wow, you won the game by a narrow margin");
-    round = 5;
-  } else if (tie >= 3 && win < loss) {
+    round = 6;
+  } else if (round === 6 && ((loss < 3) && (win < loss))) {
     prompt("The computer won the game but it was very close!");
-    round = 5;
-  } else if (tie >= 3 && win === loss) {
+    round = 6;
+  } else if (tie === 3 && ((win === 1) && (loss === 1))) {
     prompt("wow, the game ends in a tie...that's some skill right there!");
-    round = 5;
+    round = 6;
+  } else if (tie === 5) {
+    prompt("That`s a flat tie! You better tie your tie for the next game!");
+  } else if (tie === 1 && ((win === 2) && (loss === 2))) {
+    prompt("wow, the game ends in a tie...that's some skill right there!");
   }
 }
 
@@ -139,6 +155,7 @@ function continuePlaying() {
     console.clear();
     return false;
   } else {
+    resetScores();
     return true;
   }
 }
@@ -146,14 +163,10 @@ function continuePlaying() {
 // program start
 
 function playRound() {
-  while (round < 5) {
-
-    codeDivider();
-
+  do {
     displayScore();
 
     codeDivider();
-
     let userChoice = getUserChoice();
     let computerChoice = getComputerChoice();
 
@@ -166,7 +179,9 @@ function playRound() {
     codeDivider();
 
     winCounter(winnerOfRound);
-  }
+
+    displayGameWinner(win, loss, tie);
+  } while (round <= 5);
 }
 
 do {
@@ -178,5 +193,4 @@ do {
 
   playRound();
 
-  displayGameWinner(win, loss, tie);
 } while (continuePlaying());
