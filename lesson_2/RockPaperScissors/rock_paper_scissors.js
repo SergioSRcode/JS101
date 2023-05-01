@@ -2,6 +2,7 @@
 const READLINE = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_ABBREVIATIONS = ["r", "p", "sc", "l", "sp"];
+const MAX_NO_OF_ROUNDS = 5;
 
 const WINNING_COMBOS = {
   rock:     ['scissors', 'lizard'],
@@ -129,10 +130,10 @@ function displayGameWinner(win, loss, tie) {
   } else if (loss === 3) {
     prompt(`The computer won the game by winning ${loss} rounds! Better luck next time!`);
     round = 6;
-  } else if (round === 6 && ((win < 3) && (win > loss))) {
+  } else if (round > MAX_NO_OF_ROUNDS && ((win < 3) && (win > loss))) {
     prompt("Wow, you won the game by a narrow margin");
     round = 6;
-  } else if (round === 6 && ((loss < 3) && (win < loss))) {
+  } else if (round > MAX_NO_OF_ROUNDS && ((loss < 3) && (win < loss))) {
     prompt("The computer won the game but it was very close!");
     round = 6;
   } else if (tie === 3 && ((win === 1) && (loss === 1))) {
@@ -185,7 +186,7 @@ function playRound() {
     roundCounter();
 
     displayGameWinner(win, loss, tie);
-  } while (round <= 5);
+  } while (round <= MAX_NO_OF_ROUNDS);
 }
 
 do {
