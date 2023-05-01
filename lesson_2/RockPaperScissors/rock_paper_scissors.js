@@ -21,7 +21,12 @@ function prompt(message) {
 }
 
 function codeDivider() {
-  console.log(` `);
+  console.log();
+}
+
+function greetingMessage() {
+  prompt(`Welcome to RPS, the game for gamers all around the globe! 
+  - Note: The AI used is called "lesser GPT".`);
 }
 
 function displayScore() {
@@ -178,8 +183,7 @@ function playRound() {
 do {
   console.clear();
 
-  prompt(`Welcome to RPS, the game for gamers all around the globe! 
-  - Note: The AI used is called "lesser GPT".`);
+  greetingMessage();
 
   codeDivider();
 
