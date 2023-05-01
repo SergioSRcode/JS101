@@ -24,6 +24,10 @@ function codeDivider() {
   console.log(` `);
 }
 
+function displayScore() {
+  console.log(`Round No. ${round}  [Wins: ${win}] - [Losses: ${loss}] - [Ties: ${tie}]`);
+}
+
 // program functions
 function getUserChoice() {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
@@ -150,7 +154,7 @@ function playRound() {
 
     codeDivider();
 
-    console.log(`Round No. ${round}  [Wins: ${win}] - [Losses: ${loss}] - [Ties: ${tie}]`);
+    displayScore();
 
     codeDivider();
 
