@@ -166,7 +166,7 @@ function playRound() {
     let userChoice = getUserChoice();
     let computerChoice = getComputerChoice();
 
-    codeDivider();
+    console.clear();
 
     displayChoices(userChoice, computerChoice);
     let winnerOfRound = getWinnerOfRound(userChoice, computerChoice);
