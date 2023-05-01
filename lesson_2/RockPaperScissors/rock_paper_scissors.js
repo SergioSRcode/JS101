@@ -2,11 +2,15 @@
 const READLINE = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_ABBREVIATIONS = ["r", "p", "sc", "l", "sp"];
-const ROCK = ["rock", "r"];
-const PAPER = ["paper", "p"];
-const SCISSORS = ["scissors", "sc"];
-const LIZARD = ["lizard", "l"];
-const SPOCK = ["spock", "sp"];
+
+const WINNING_COMBOS = {
+  rock:     ['scissors', 'lizard'],
+  paper:    ['rock',     'spock'],
+  scissors: ['paper',    'lizard'],
+  lizard:   ['paper',    'spock'],
+  spock:    ['rock',     'scissors'],
+};
+
 const ANSWER_YES_OR_NO = ["y", "yes", "n", "no"];
 
 // counters
@@ -71,20 +75,7 @@ function displayChoices(userChoice, computerChoice) {
 function getWinnerOfRound(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
     return "tie";
-  } else if ((ROCK.includes(userChoice) &&
-      (SCISSORS.includes(computerChoice) || LIZARD.includes(computerChoice))) ||
-
-      (SCISSORS.includes(userChoice) &&
-      (PAPER.includes(computerChoice) || LIZARD.includes(computerChoice))) ||
-
-      (PAPER.includes(userChoice) &&
-      (ROCK.includes(computerChoice) || SPOCK.includes(computerChoice))) ||
-
-      (SPOCK.includes(userChoice) &&
-      (SCISSORS.includes(computerChoice) || ROCK.includes(computerChoice))) ||
-
-      (LIZARD.includes(userChoice) &&
-      (PAPER.includes(computerChoice) || SPOCK.includes(computerChoice)))) {
+  } else if (WINNING_COMBOS[userChoice].includes(computerChoice)) {
     return "user";
   } else {
     return "computer";
@@ -175,8 +166,6 @@ function playRound() {
     codeDivider();
 
     winCounter(winnerOfRound);
-
-    displayGameWinner(win, loss, tie);
   }
 }
 
@@ -189,4 +178,5 @@ do {
 
   playRound();
 
+  displayGameWinner(win, loss, tie);
 } while (continuePlaying());
