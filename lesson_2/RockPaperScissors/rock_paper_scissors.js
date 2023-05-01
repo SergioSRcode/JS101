@@ -115,6 +115,9 @@ function winCounter(winnerOfRound) {
       tie += 1;
       break;
   }
+}
+
+function roundCounter() {
   round += 1;
 }
 
@@ -179,6 +182,7 @@ function playRound() {
     codeDivider();
 
     winCounter(winnerOfRound);
+    roundCounter();
 
     displayGameWinner(win, loss, tie);
   } while (round <= 5);
