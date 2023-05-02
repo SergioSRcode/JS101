@@ -61,6 +61,10 @@ function getUserChoice() {
     prompt("That's not a valid choice, try again!");
     userChoice = READLINE.question().toLowerCase();
   }
+  return userChoice;
+}
+
+function abbreviationToFullWord(userChoice) {
   // turn abbreviation into full word
   if (VALID_ABBREVIATIONS.includes(userChoice)) {
     // eslint-disable-next-line id-length
@@ -72,6 +76,7 @@ function getUserChoice() {
   }
   return userChoice;
 }
+
 
 function getComputerChoice() {
   let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
@@ -172,12 +177,13 @@ function playRound() {
 
     codeDivider();
     let userChoice = getUserChoice();
+    let userChoiceFullWord = abbreviationToFullWord(userChoice);
     let computerChoice = getComputerChoice();
 
     console.clear();
 
-    displayChoices(userChoice, computerChoice);
-    let winnerOfRound = getWinnerOfRound(userChoice, computerChoice);
+    displayChoices(userChoiceFullWord, computerChoice);
+    let winnerOfRound = getWinnerOfRound(userChoiceFullWord, computerChoice);
     displayWinnerOfRound(winnerOfRound);
 
     codeDivider();
