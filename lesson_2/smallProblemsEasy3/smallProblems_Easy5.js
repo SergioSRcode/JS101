@@ -34,6 +34,7 @@ FUNCTION (num)
   }
 
 */
+/* My solution
 
 function triangle(num) {
   let counter = num;
@@ -48,10 +49,28 @@ function triangle(num) {
 
   while (counter >= 1) {
     arr[arr.length - starCont] = "*";
-    console.log(arr.join(" "));
+    console.log(arr.join(""));
 
     starCont += 1;
     counter -= 1;
+  }
+}
+
+triangle(5);
+triangle(9);
+*/
+
+// LS solution
+
+function triangle(height) {
+  let spaces = height - 1;
+  let stars = 1;
+
+  while (height > 0) {
+    console.log(`${" ".repeat(spaces)}${"*".repeat(stars)}`);
+    spaces -= 1;
+    stars += 1;
+    height -= 1;
   }
 }
 
